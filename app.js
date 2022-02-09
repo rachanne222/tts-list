@@ -20,6 +20,7 @@ let priority= "high"
 // show form
 function clickAdd(id){
     document.getElementById(id).style.display = 'block';
+    document.getElementById('addButton').style.display = 'none';
 }
 
 // add item from form info unshow form
@@ -44,18 +45,20 @@ function addtoList(task){
     let dId=`${bId}date`
     taskId=`${bId}id`
     rId=`r${bId}`
+    trid=task.priority
     let newElement= 
-    `<tr id=${taskId}> <th scope="row">${num}</th> 
+    `<tr class=${trid} id=${taskId}> <th scope="row">${num}</th> 
     <td> ${task.todo}</td>
     <td>${task.priority}</td>
     <td> ${task.myDate}</td>
      <td id=${dId}> </td>
-    <td><button id=${bId} type="button" class="btn btn-outline-success" onClick="markComplete(this.id)">Complete</button> 
-    <button id=${rId} type="button" class="btn btn-outline-danger" onClick="remove(this.id)">Remove</button></td>
-
+     <td>
+    <button id=${rId} type="button" class="btn btn-outline-danger" onClick="remove(this.id)">Remove</button>
+    <button id=${bId} type="button" class="btn btn-outline-success" onClick="markComplete(this.id)">Complete</button> </td>
     </tr>`
     console.log(taskId)
     listStart.insertAdjacentHTML( 'beforeend', newElement)
+    document.getElementById('addButton').style.display = 'block';
 
 }
 //Mark item as complete and set completion date
@@ -74,6 +77,7 @@ function markComplete(id){
     newElement.innerHTML= completeDate
     listAmmend.style.textDecoration ="line-through"
     newElement.style.setProperty("textDecoration", "none", "important");
+    document.getElementById(`${id}`).style.display = 'none';
 
 }
 
@@ -81,8 +85,9 @@ function remove(rid){
     let text = "Are you sure you want to remove this task? \nEither OK or Cancel.";
     if (confirm(text) == true) {
     text = "Task removed!";
-  } else {
-    text = "Task Saved";
+  } else {text = "Task Saved";
+      return
+    
   }
     
     let taskid=rid.slice(1)+"id"

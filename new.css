@@ -1,5 +1,5 @@
 h1{
-    color: blue;}
+    color: black;}
 
     .table-primary{
 background-color: red;
@@ -9,4 +9,19 @@ color: red;
 
 #formInfo{
     display: none
+}
+
+.High{
+    color: red;
+    background-color: hsla(0, 100%, 50%, 0.1);
+}
+
+.Medium{
+    color:orange;
+    background-color: hsla(34, 100%, 50%, 0.1);
+}
+
+.Low{
+    color:green;
+    background-color: hsla(128, 100%, 50%, 0.1);
 }
