@@ -52,7 +52,7 @@ function addtoList(task){
      <td id=${dId}> </td>
     <td><button id=${bId} type="button" class="btn btn-outline-success" onClick="markComplete(this.id)">Complete</button> 
     <button id=${rId} type="button" class="btn btn-outline-danger" onClick="remove(this.id)">Remove</button></td>
-   
+
     </tr>`
     console.log(taskId)
     listStart.insertAdjacentHTML( 'beforeend', newElement)
@@ -78,11 +78,11 @@ function markComplete(id){
 }
 
 function remove(rid){
-    let text = "Press a button!\nEither OK or Cancel.";
+    let text = "Are you sure you want to remove this task? \nEither OK or Cancel.";
     if (confirm(text) == true) {
-    text = "You pressed OK!";
+    text = "Task removed!";
   } else {
-    text = "You canceled!";
+    text = "Task Saved";
   }
     
     let taskid=rid.slice(1)+"id"
